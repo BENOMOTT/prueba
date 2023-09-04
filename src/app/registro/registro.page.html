@@ -8,29 +8,32 @@
 </ion-header>
 
 <ion-content fullscreen="true">
+<!-- Inicio del card --> 
+
   <ion-card>
     <ion-card-header>
       <ion-card-title>Registro</ion-card-title>
     </ion-card-header>
     <ion-card-content>
       
+      <!-- Form de register -->
       <form [formGroup]="formularioRegistro" (keyup.enter)="guardar()">
-        
+          <!-- Campo de nombre -->
         <ion-item>
           <ion-label position="floating">Nombre</ion-label>
           <ion-input formControlName="nombre"></ion-input>
         </ion-item>
-
+          <!-- Campo de apellido -->
         <ion-item>
           <ion-label position="floating">Apellido</ion-label>
           <ion-input formControlName="apellido"></ion-input>
         </ion-item>
-
+          <!-- Campo de contraseña -->
         <ion-item>
           <ion-label position="floating">Contraseña</ion-label>
           <ion-input formControlName="contraseña" type="password"></ion-input>
         </ion-item>
-
+          <!-- Campo de correo -->
         <ion-item>
           <ion-label position="floating">Correo</ion-label>
           <ion-input
@@ -44,17 +47,17 @@
   email
 ></ion-input>
         </ion-item>
-
+          <!-- Campo de genero -->
         <ion-item>
           <ion-label position="floating">Genero</ion-label>
           <ion-input formControlName="genero"></ion-input>
         </ion-item>
-
+          <!-- Campo de edad -->
         <ion-item>
           <ion-label position="floating">Edad</ion-label>
           <ion-input formControlName="edad"></ion-input>
         </ion-item>
-
+          <!-- botón de guardar -->
         <br>
         <ion-button (click)="guardar()">Registrarse
         </ion-button>

@@ -5,37 +5,48 @@
 </ion-header>
 
 <ion-content>
+<!-- Inicio del card -->  
   <ion-card>
     <ion-card-header>
       <ion-card-title>Login</ion-card-title>
     </ion-card-header>
     <ion-card-content>
+
+      <!-- Form de login-->
+
       <form [formGroup]="formularioLogin">
         <ion-item>
+          <!-- Campo de nombre -->
           <ion-label position="floating">Nombre</ion-label>
           <ion-input formControlName="nombre"></ion-input>
         </ion-item>
+
+        <!--Campo de contraseña -->
         <ion-item>
           <ion-label position="floating">Contraseña</ion-label>
           <ion-input formControlName="contraseña" type="password"></ion-input>
         </ion-item>
       </form>
 
+      <!-- Boton de "¿Olvidaste tu contraseña?"-->
       <ion-button [routerLink]="['/password']" fill="clear">¿Olvidaste tu contraseña?</ion-button>
       
-
+      <!-- Boton de enviar -->
       <ion-button>
         Ingresar
       </ion-button>
 
-
+<!-- Final del card -->
     </ion-card-content>
   </ion-card>
 </ion-content>
 
+<!-- Inicio del footer -->
 <ion-footer>
   <ion-toolbar color="primary">
     <ion-buttons slot="end">
+      
+      <!-- Boton que redirige a la vista "Registro" -->
       <ion-button [routerLink]="['/registro']">Registrarse</ion-button>
     </ion-buttons>
   </ion-toolbar>
