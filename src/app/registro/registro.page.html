@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Registro</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      
+      <form [formGroup]="formularioRegistro" (keyup.enter)="guardar()">
+        
+        <ion-item>
+          <ion-label position="floating">Nombre</ion-label>
+          <ion-input formControlName="nombre"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Apellido</ion-label>
+          <ion-input formControlName="apellido"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Contraseña</ion-label>
+          <ion-input formControlName="contraseña" type="password"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Correo</ion-label>
+          <ion-input
+  type="email"
+  fill="solid"
+  labelPlacement="floating"
+  formControlName="correo"
+  helperText="Introduce un correo valido"
+  errorText="Correo invalido"
+  ngModel
+  email
+></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Genero</ion-label>
+          <ion-input formControlName="genero"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Edad</ion-label>
+          <ion-input formControlName="edad"></ion-input>
+        </ion-item>
+
+        <br>
+        <ion-button (click)="guardar()">Registrarse
+        </ion-button>
+        
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
