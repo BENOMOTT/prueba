@@ -23,64 +23,28 @@
     <ion-card-content>
 
       <!-- Inicio del formulario -->
-<form action="">
+
+<form [formGroup] = "formularioLogin">
       <!--Nombre-->
       
-      <ion-input label="Nombre" label-placement="floating" fill="solid" placeholder="Ingrese su nombre"></ion-input>
-
-<br />
-
-<!-- Apellido -->
-<ion-input label="Apellido" label-placement="floating" fill="solid" placeholder="Ingrese su apellido"></ion-input>
-
-<br>
-
-<!--Genero-->
-
-<ion-item>
-  <ion-select fill="solid" label="Genero" label-placement="stacked">
-    <ion-select-option value="apple">Masculino</ion-select-option>
-    <ion-select-option value="banana">Femenino</ion-select-option>
-    <ion-select-option value="orange">Otro</ion-select-option>
-  </ion-select>
-</ion-item>
-
-<br>
-
-<!--Edad-->
-
-<ion-input label="Edad" type="number" label-placement="floating" fill="solid" placeholder="Ingrese su edad"></ion-input>
-
-
-<br>
+      <ion-item>
+      <ion-input label="Nombre" formControlName="nombre" label-placement="floating" fill="solid" placeholder="Ingrese su nombre"></ion-input>
+      </ion-item>
 
 <!--Contraseña-->
-
-<ion-input label="Contraseña" type="password" labelPlacement="floating" fill="solid" [counter]="true" maxlength="15"></ion-input>
-
-
-<!--Email-->
-<ion-input
-  type="email"
-  fill="solid"
-  label="Correo"
-  labelPlacement="floating"
-  helperText="Ingresa un correo valido"
-  errorText="Correo Invalido"
-  ngModel
-  email
-></ion-input>
-
-<br> 
-
-
+<ion-item>
+<ion-input label="Contraseña"  formControlName="contraseña" type="password" labelPlacement="floating" fill="solid" [counter]="true" maxlength="15"></ion-input>
+</ion-item>
 
 <!--Boton enviar-->
 
- <ion-button method="POST" expand="full">Enviar</ion-button>
+<ion-button (click)="ingresar()">
+        Ingresar
+      </ion-button>
 </form>
 
     </ion-card-content>
   </ion-card>
 
 </ion-content>
+

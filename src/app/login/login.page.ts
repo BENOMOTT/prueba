@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +9,43 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPage implements OnInit {
 
-  constructor() { }
+  formularioLogin: FormGroup;
+
+  constructor(public fb: FormBuilder,
+    public alertController: AlertController) { 
+
+    this.formularioLogin = this.fb.group({
+      'nombre': new FormControl("", Validators.required),
+      'contraseña': new FormControl("", Validators.required),
+    })
+   }
 
   ngOnInit() {
   }
 
+
+  async ingresar(){
+    var f = this.formularioLogin.value;
+
+    var usuario = JSON.parse(localStorage.getItem('usuario')!);
+
+
+    if(usuario.nombre == f.nombre && usuario.password == f.password){
+      console.log('Ingresado');
+    }else{
+      const alert = await this.alertController.create({
+        header: 'Datos incorrectos',
+        message: 'Los datos que ingresaste son incorrectos.',
+        buttons: ['Aceptar']
+      });
+  
+      await alert.present();
+    }
+  }
+
 }
+
+
+  
+
+
