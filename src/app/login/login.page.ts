@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup,FormControl,Validators,FormBuilder
-} from '@angular/forms';
+import {FormGroup,FormControl,Validators,FormBuilder} from '@angular/forms';
 import { AlertController } from '@ionic/angular';
 
 @Component({
@@ -17,7 +16,7 @@ export class LoginPage implements OnInit {
 
     this.formularioLogin = this.fb.group({
       'nombre': new FormControl("",Validators.required),
-      'password': new FormControl("",Validators.required)
+      'contraseña': new FormControl("",Validators.required)
     })
 
   }
@@ -44,3 +43,4 @@ export class LoginPage implements OnInit {
   }
 
 }
+
