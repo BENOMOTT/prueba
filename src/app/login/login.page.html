@@ -29,7 +29,8 @@
       <br>
 
       <!-- Boton de enviar -->
-      <ion-button expand="full">Iniciar Sesión</ion-button>
+      <ion-button expand="full" (click)="iniciarSesion()">Iniciar Sesión</ion-button>
+
 
     </ion-card-content>
     <!-- Final del card -->
@@ -84,6 +85,7 @@
     <ion-buttons slot="end">
       <!-- Boton que redirige a la vista "Registro" -->
       <ion-button [routerLink]="['/registro']">Registrarse</ion-button>
+
     </ion-buttons>
   </ion-toolbar>
 </ion-footer>
