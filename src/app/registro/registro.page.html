@@ -49,13 +49,21 @@
         </ion-item>
           <!-- Campo de genero -->
         <ion-item>
-          <ion-label position="floating">Genero</ion-label>
-          <ion-input formControlName="genero"></ion-input>
+          <ion-list>
+            <ion-item>
+              <ion-select aria-label="genero" interface="popover" formControlName="genero" placeholder="Genero">
+
+                <ion-select-option value="Masculino">Masculino</ion-select-option>
+                <ion-select-option value="Femenino">Femenino</ion-select-option>
+                <ion-select-option value="Otro">Otro</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
         </ion-item>
           <!-- Campo de edad -->
         <ion-item>
           <ion-label position="floating">Edad</ion-label>
-          <ion-input formControlName="edad"></ion-input>
+          <ion-input type="number" formControlName="edad"></ion-input>
         </ion-item>
           <!-- botón de guardar -->
         <br>

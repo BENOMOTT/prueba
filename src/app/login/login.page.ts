@@ -1,46 +1,49 @@
-import { Component, OnInit } from '@angular/core';
-import {FormGroup,FormControl,Validators,FormBuilder} from '@angular/forms';
-import { AlertController } from '@ionic/angular';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ModalController } from '@ionic/angular';
+import { ModalComponent } from '../modal/modal.component';
+import { Component, ElementRef, ViewChildren } from '@angular/core';
+import type { QueryList } from '@angular/core';
+import type { Animation } from '@ionic/angular';
+import { AnimationController, IonCard } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
+  templateUrl: 'login.page.html',
+  styleUrls: ['login.page.scss'],
 })
-export class LoginPage implements OnInit {
-
+export class LoginPage {
   formularioLogin: FormGroup;
+  isModalOpen = false;
 
-  constructor(public fb: FormBuilder,
-    public alertController: AlertController) { 
-
-    this.formularioLogin = this.fb.group({
-      'nombre': new FormControl("",Validators.required),
-      'contraseña': new FormControl("",Validators.required)
-    })
-
+  constructor(
+    private formBuilder: FormBuilder,
+    private modalController: ModalController
+  ) {
+    this.formularioLogin = this.formBuilder.group({
+      nombre: ['', Validators.required],
+      contraseña: ['', Validators.required],
+    });
   }
 
-  ngOnInit() {
+  async setOpen(isOpen: boolean) {
+    this.isModalOpen = isOpen;
   }
 
-  async ingresar(){
-    var f = this.formularioLogin.value;
+  async openModal() {
+    this.setOpen(true);
+    const modal = await this.modalController.create({
+      component: ModalComponent,
+    });
+    return await modal.present();
+  }
 
-    var usuario = JSON.parse(localStorage.getItem('usuario')!);
+  closeModal() {
+    this.setOpen(false); 
+    this.modalController.dismiss();
+  }
 
-    if(usuario.nombre == f.nombre && usuario.password == f.password){
-      console.log('Ingresado');
-    }else{
-      const alert = await this.alertController.create({
-        header: 'Datos incorrectos',
-        message: 'Los datos que ingresaste son incorrectos.',
-        buttons: ['Aceptar']
-      });
   
-      await alert.present();
-    }
-  }
+
+
 
 }
-
