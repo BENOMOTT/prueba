@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -10,10 +11,15 @@ export class LoginPage {
   formularioLogin: FormGroup;
   isModalOpen: boolean = false;
 
-  constructor(private router: Router, private formBuilder: FormBuilder) {
+  constructor(
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private modalController: ModalController
+  ) {
     this.formularioLogin = this.formBuilder.group({
       nombre: ['', Validators.required],
       contraseña: ['', [Validators.required, this.validaContraseña]],
+      correo: ['', [Validators.required, Validators.email]]
     });
   }
 
@@ -42,7 +48,20 @@ export class LoginPage {
     }
   }
 
-  // Define la función setOpen para controlar la apertura y cierre del modal
+  enviarFormulario() {
+    const correoControl = this.formularioLogin.get('correo');
+
+    if (correoControl && correoControl.valid) {
+
+      this.modalController.dismiss();
+
+
+      this.router.navigate(['/login']);
+    } else {
+      console.log('Por favor, complete todos los campos correctamente.');
+    }
+  }
+
   setOpen(open: boolean) {
     this.isModalOpen = open;
   }
