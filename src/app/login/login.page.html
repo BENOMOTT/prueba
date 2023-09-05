@@ -9,6 +9,7 @@
   <ion-card>
     <ion-card-header>
       <ion-card-title>Login</ion-card-title>
+      <h1>Acordify </h1>
     </ion-card-header>
     <ion-card-content>
       <!-- Form de login -->
@@ -26,66 +27,53 @@
         </ion-item>
       </form>
 
-      <br>
-
       <!-- Boton de enviar -->
       <ion-button expand="full" (click)="iniciarSesion()">Iniciar Sesión</ion-button>
-
-
     </ion-card-content>
     <!-- Final del card -->
   </ion-card>
 
   <!-- Boton de "¿Olvidaste tu contraseña?" -->
+  <ion-button expand="block" (click)="setOpen(true)">¿Olvidaste tu contraseña?</ion-button>
+  <ion-modal [isOpen]="isModalOpen">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>¿Olvidaste tu contraseña?</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="setOpen(false)">Cerrar</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <h1>Reestablecer contraseña</h1> <br>
+        <h5>Te enviaremos un correo con la información para reestablecer tu contraseña</h5>
+        <form>
+          <ion-item>
+            <ion-label position="floating">Correo</ion-label>
+            <ion-input
+              type="email"
+              fill="solid"
+              labelPlacement="floating"
+              formControlName="correo"
+              helperText="Introduce un correo válido"
+              errorText="Correo inválido"
+              ngModel
+              email
+            ></ion-input>
+          </ion-item>
+          <ion-button [routerLink]="['/registro']">Enviar</ion-button>
+        </form>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+</ion-content>
 
-  <ion-content class="ion-padding">
-    <ion-button expand="block" (click)="setOpen(true)">¿Olvidaste tu contraseña?</ion-button>
-    <ion-modal [isOpen]="isModalOpen">
-      <ng-template>
-        <ion-header>
-          <ion-toolbar>
-            <ion-title>¿Olvidaste tu contraseña?</ion-title>
-            <ion-buttons slot="end">
-              <ion-button (click)="setOpen(false)">Cerrar</ion-button>
-            </ion-buttons>
-          </ion-toolbar>
-        </ion-header>
-        <ion-content class="ion-padding">
-          
-
-          <h1>Reestablecer contraseña</h1> <br>
-
-          <h5>Te enviaremos un correo con la informacion para reestablecer tu contraseña</h5>
-          
-          <form>
-            <ion-item>
-              <ion-label position="floating">Correo</ion-label>
-              <ion-input
-                type="email"
-                fill="solid"
-                labelPlacement="floating"
-                formControlName="correo"
-                helperText="Introduce un correo válido"
-                errorText="Correo inválido"
-                ngModel
-                email
-              ></ion-input>
-            </ion-item>
-            <ion-button [routerLink]="['/registro']">Enviar</ion-button>
-          </form>
-
-        </ion-content>
-      </ng-template>
-    </ion-modal>
-  </ion-content>
-
-<!-- Inicio del footer -->
+<!-- Boton que redirige a la vista "Registro" -->
 <ion-footer>
   <ion-toolbar color="primary">
     <ion-buttons slot="end">
-      <!-- Boton que redirige a la vista "Registro" -->
       <ion-button [routerLink]="['/registro']">Registrarse</ion-button>
-
     </ion-buttons>
   </ion-toolbar>
 </ion-footer>

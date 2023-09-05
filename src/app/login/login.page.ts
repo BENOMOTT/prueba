@@ -13,30 +13,26 @@ export class LoginPage {
   constructor(private router: Router, private formBuilder: FormBuilder) {
     this.formularioLogin = this.formBuilder.group({
       nombre: ['', Validators.required],
-      contraseña: ['', [Validators.required, this.validaContraseña]], // Usar la función de validación personalizada
+      contraseña: ['', [Validators.required, this.validaContraseña]],
     });
   }
 
   iniciarSesion() {
-    if (this.formularioLogin.valid) {
-      this.router.navigate(['/home']);
+    const nombreControl = this.formularioLogin.get('nombre');
+    
+    if (nombreControl && nombreControl.valid) {
+      const nombreUsuario = nombreControl.value;
+      this.router.navigate(['/home', { nombreUsuario }]);
     } else {
       console.log('Por favor, complete todos los campos y asegúrese de que la contraseña cumpla con los requisitos.');
     }
   }
-  
-  setOpen(open: boolean) {
-    this.isModalOpen = open;
-  }
-  
+
   validaContraseña(control: AbstractControl) {
     const password = control.value;
 
-
     const hasFourNumbers = (password.match(/\d/g) || []).length >= 4;
-
     const hasThreeChars = (password.match(/[a-zA-Z]/g) || []).length >= 3;
-
     const hasUpperCase = /[A-Z]/.test(password);
 
     if (hasFourNumbers && hasThreeChars && hasUpperCase) {
@@ -44,5 +40,10 @@ export class LoginPage {
     } else {
       return { invalidPassword: true };
     }
+  }
+
+  // Define la función setOpen para controlar la apertura y cierre del modal
+  setOpen(open: boolean) {
+    this.isModalOpen = open;
   }
 }

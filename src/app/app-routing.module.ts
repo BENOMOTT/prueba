@@ -23,6 +23,10 @@ const routes: Routes = [
     path: 'password',
     loadChildren: () => import('./password/password.module').then( m => m.PasswordPageModule)
   },
+  {
+    path: 'instrumentos',
+    loadChildren: () => import('./instrumentos/instrumentos.module').then( m => m.InstrumentosPageModule)
+  },
 ];
 
 @NgModule({
