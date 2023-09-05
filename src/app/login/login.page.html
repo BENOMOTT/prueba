@@ -25,6 +25,7 @@
           <ion-label position="floating">Contraseña</ion-label>
           <ion-input formControlName="contraseña" type="password"></ion-input>
         </ion-item>
+        <ion-label position="block">Contraseña mínima: 4 números, 3 caracteres, 1 mayúscula *</ion-label>
       </form>
 
       <!-- Boton de enviar -->
@@ -46,9 +47,10 @@
         </ion-toolbar>
       </ion-header>
       <ion-content class="ion-padding">
-        <h1>Reestablecer contraseña</h1> <br>
+        <h1>Reestablecer contraseña</h1>
+        <br>
         <h5>Te enviaremos un correo con la información para reestablecer tu contraseña</h5>
-        <form>
+        <form [formGroup]="formularioLogin">
           <ion-item>
             <ion-label position="floating">Correo</ion-label>
             <ion-input
@@ -62,7 +64,8 @@
               email
             ></ion-input>
           </ion-item>
-          <ion-button [routerLink]="['/registro']">Enviar</ion-button>
+          <!-- Boton de enviar en el modal -->
+          <ion-button expand="full" (click)="enviarFormulario()">Enviar</ion-button>
         </form>
       </ion-content>
     </ng-template>
