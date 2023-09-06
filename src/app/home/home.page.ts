@@ -1,5 +1,6 @@
-import { Component, ChangeDetectorRef } from '@angular/core';
+import { Component, ChangeDetectorRef, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Animation, AnimationController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -9,18 +10,38 @@ import { ActivatedRoute } from '@angular/router';
 export class HomePage {
   nombreUsuario: string = '';
 
-  constructor(
-    private activatedRoute: ActivatedRoute,
-    private cdr: ChangeDetectorRef 
-  ) {}
+  @ViewChild('card', { read: ElementRef }) card!: ElementRef;
 
-  ngOnInit() {
-    const nombreUsuarioParam = this.activatedRoute.snapshot.paramMap.get('nombreUsuario');
-    if (nombreUsuarioParam !== null) {
-      this.nombreUsuario = nombreUsuarioParam;
-      console.log('Datos obtenidos:', this.nombreUsuario);
-      this.cdr.detectChanges(); 
+  private animation!: Animation;
+
+  constructor(private animationCtrl: AnimationController) {}
+
+  ngAfterViewInit() {
+    if (this.card) {
+      this.animation = this.animationCtrl
+        .create()
+        .addElement(this.card.nativeElement)
+        .duration(3000)
+        .iterations(Infinity)
+        .keyframes([
+          { offset: 0, width: '80px' },
+          { offset: 0.72, width: 'var(--width)' },
+          { offset: 1, width: '240px' },
+        ]);
     }
   }
+
+  play() {
+    this.animation.play();
+  }
+
+  pause() {
+    this.animation.pause();
+  }
+
+  stop() {
+    this.animation.stop();
+  }
 }
+
 

@@ -27,6 +27,11 @@ const routes: Routes = [
     path: 'instrumentos',
     loadChildren: () => import('./instrumentos/instrumentos.module').then( m => m.InstrumentosPageModule)
   },
+  {
+    path: '**',
+    loadChildren: () => import('./not-found/not-found.module').then( m => m.NOTFOUNDPageModule)
+  },
+
 ];
 
 @NgModule({

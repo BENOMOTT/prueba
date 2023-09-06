@@ -19,7 +19,7 @@
     </ion-card-header>
   
     <ion-card-content>
-      Bienvenido a nuestra Acordify, una aplicacion donde podras aprender a tocar el instrumento musical que quieras de manera facil y divertida.
+      Bienvenido a nuestra Acordify, una aplicación donde podrás aprender a tocar el instrumento musical que quieras de manera fácil y divertida.
     </ion-card-content>
   </ion-card>
 
@@ -27,7 +27,7 @@
     <img src="assets/img/instrumentos.jpg" alt="guitarra">
     <ion-card-header>
       <ion-card-title>Conoce nuevos instrumentos</ion-card-title>
-      <ion-card-subtitle>Aqui podras escuchar los instrumentos musicales mas conocidos de cada genero</ion-card-subtitle>
+      <ion-card-subtitle>Aquí podrás escuchar los instrumentos musicales más conocidos de cada género</ion-card-subtitle>
     </ion-card-header>
   
     <ion-card-content>
@@ -38,37 +38,42 @@
   <ion-card>
     <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
     <ion-card-header>
-      <ion-card-title>Proximamente</ion-card-title>
+      <ion-card-title>Próximamente</ion-card-title>
       <ion-card-subtitle></ion-card-subtitle>
     </ion-card-header>
   
     <ion-card-content>
-      Estamos trabajando por nuevas funciones
+      Estamos trabajando en nuevas funciones
     </ion-card-content>
   </ion-card>
 
   <ion-card>
     <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
     <ion-card-header>
-      <ion-card-title>Proximamente</ion-card-title>
+      <ion-card-title>Próximamente</ion-card-title>
     </ion-card-header>
   
     <ion-card-content>
-      Estamos trabajando por nuevas funciones
+      Estamos trabajando en nuevas funciones
     </ion-card-content>
   </ion-card>
 
-  <ion-card>
+  <ion-card #card style="width: 412px; --width: 160px;"> 
     <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
     <ion-card-header>
       <ion-card-title>En desarrollo</ion-card-title>
     </ion-card-header>
   
     <ion-card-content>
-      Estamos trabajando por nuevas funciones
+      Estamos trabajando en nuevas funciones
     </ion-card-content>
   </ion-card>
 
 
-
+  <ion-card #card style="width: 80px; --width: 160px;">
+    <ion-card-content>Card</ion-card-content>
+  </ion-card>
+  <ion-button (click)="play()">Play</ion-button>
+  <ion-button (click)="pause()">Pause</ion-button>
+  <ion-button (click)="stop()">Stop</ion-button>
 </ion-content>
