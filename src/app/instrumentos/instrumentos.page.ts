@@ -12,4 +12,10 @@ export class InstrumentosPage implements OnInit {
   ngOnInit() {
   }
 
+  reproducirSonido(rutaSonido: string) {
+    const audio = new Audio(rutaSonido);
+    audio.play();
+  }
+
+
 }

@@ -8,6 +8,8 @@ import { InstrumentosPageRoutingModule } from './instrumentos-routing.module';
 
 import { InstrumentosPage } from './instrumentos.page';
 
+
+
 @NgModule({
   imports: [
     CommonModule,
@@ -15,6 +17,6 @@ import { InstrumentosPage } from './instrumentos.page';
     IonicModule,
     InstrumentosPageRoutingModule
   ],
-  declarations: [InstrumentosPage]
+  declarations: [InstrumentosPage],
 })
 export class InstrumentosPageModule {}
