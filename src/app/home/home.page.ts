@@ -14,8 +14,20 @@ export class HomePage {
 
   private animation!: Animation;
 
-  constructor(private animationCtrl: AnimationController) {}
+  
+  constructor(private animationCtrl: AnimationController,
+    private activatedRoute: ActivatedRoute,
+    private cdr: ChangeDetectorRef) {}
 
+
+    ngOnInit() {
+      const nombreUsuarioParam = this.activatedRoute.snapshot.paramMap.get('nombreUsuario');
+      if (nombreUsuarioParam !== null) {
+        this.nombreUsuario = nombreUsuarioParam;
+        console.log('Datos obtenidos:', this.nombreUsuario);
+        this.cdr.detectChanges(); 
+      }
+    }
   ngAfterViewInit() {
     if (this.card) {
       this.animation = this.animationCtrl
