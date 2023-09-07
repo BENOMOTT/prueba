@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChildren, ViewChild } from '@angular/core';
+import type { QueryList } from '@angular/core';
+import type { Animation } from '@ionic/angular';
+import { AnimationController, IonCard } from '@ionic/angular';
 
 @Component({
   selector: 'app-not-found',
@@ -6,8 +9,34 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./not-found.page.scss'],
 })
 export class NOTFOUNDPage implements OnInit {
-  constructor() {}
+  @ViewChild(IonCard, { read: ElementRef }) card!: ElementRef<HTMLIonCardElement>;
 
+  private animation!: Animation;
+
+  constructor(private animationCtrl: AnimationController) {}
+
+  ngAfterViewInit() {
+    this.animation = this.animationCtrl
+      .create()
+      .addElement(this.card.nativeElement)
+      .duration(1500)
+      .iterations(Infinity)
+      .direction('alternate')
+      .fromTo('background', 'blue', 'var(--background)');
+  }
+
+  play() {
+    this.animation.play();
+  }
+
+  pause() {
+    this.animation.pause();
+  }
+
+  stop() {
+    this.animation.stop();
+  }
+    
   ngOnInit() {}
 }
 
