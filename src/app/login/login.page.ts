@@ -7,13 +7,18 @@ import type { IonModal } from '@ionic/angular';
 import { AnimationController } from '@ionic/angular';
 
 
+
 @Component({
   selector: 'app-login',
   templateUrl: 'login.page.html',
+
 })
+
+
 export class LoginPage {
   formularioLogin: FormGroup;
   isModalOpen: boolean = false;
+  mostrarBarraProgreso = false; 
 
   constructor(
     private router: Router,
@@ -32,21 +37,37 @@ export class LoginPage {
     const contraseñaControl = this.formularioLogin.get('contraseña');
     
     if (nombreControl && nombreControl.valid && contraseñaControl && contraseñaControl.valid) {
+
+      this.mostrarBarra();
+
       const password = contraseñaControl.value;
       const hasFourNumbers = (password.match(/\d/g) || []).length >= 4;
       const hasThreeChars = (password.match(/[a-zA-Z]/g) || []).length >= 3;
       const hasUpperCase = /[A-Z]/.test(password);
 
+
+      //interpolacion
       if (hasFourNumbers && hasThreeChars && hasUpperCase) {
         const nombreUsuario = nombreControl.value;
         this.router.navigate(['/home', { nombreUsuario }]);
       } else {
         console.log('La contraseña no cumple con los requisitos.');
       }
+      this.ocultarBarra();
+
     } else {
       console.log('Por favor, complete todos los campos correctamente.');
     }
   }
+
+  mostrarBarra() {
+    this.mostrarBarraProgreso = true;
+  }
+
+  // Método para ocultar la barra de progreso
+  ocultarBarra() {
+    this.mostrarBarraProgreso = false;
+  } 
 
   validaContraseña(control: AbstractControl) {
     const password = control.value;
@@ -61,6 +82,8 @@ export class LoginPage {
       return { invalidPassword: true };
     }
   }
+
+  //modal
 
   enviarFormulario() {
     const correoControl = this.formularioLogin.get('correo');
