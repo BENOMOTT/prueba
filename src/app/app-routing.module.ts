@@ -30,7 +30,31 @@ const routes: Routes = [
   {
     path: '**',
     loadChildren: () => import('./not-found/not-found.module').then( m => m.NOTFOUNDPageModule)
+  },  {
+    path: 'add',
+    loadChildren: () => import('./productos/add/add.module').then( m => m.AddPageModule)
   },
+  {
+    path: 'product-add',
+    loadChildren: () => import('./productos/product-add/product-add.module').then( m => m.ProductAddPageModule)
+  },
+  {
+    path: 'product-all',
+    loadChildren: () => import('./productos/product-all/product-all.module').then( m => m.ProductAllPageModule)
+  },
+  {
+    path: 'product-detail',
+    loadChildren: () => import('./productos/product-detail/product-detail.module').then( m => m.ProductDetailPageModule)
+  },
+  {
+    path: 'product-edit',
+    loadChildren: () => import('./productos/product-edit/product-edit.module').then( m => m.ProductEditPageModule)
+  },
+  {
+    path: 'product-list',
+    loadChildren: () => import('./productos/product-list/product-list.module').then( m => m.ProductListPageModule)
+  },
+
 
 ];
 
