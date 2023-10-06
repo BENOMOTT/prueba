@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 // Importamos Librerías
 import { LoadingController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ClProducto } from '../model/ClProducto';
+import { ClProducto } from '../model/CLProducto';
 //import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { ProductServiceService } from '../product-service.service';
 

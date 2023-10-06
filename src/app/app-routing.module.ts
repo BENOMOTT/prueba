@@ -27,13 +27,8 @@ const routes: Routes = [
     path: 'instrumentos',
     loadChildren: () => import('./instrumentos/instrumentos.module').then( m => m.InstrumentosPageModule)
   },
-  {
-    path: '**',
-    loadChildren: () => import('./not-found/not-found.module').then( m => m.NOTFOUNDPageModule)
-  },  {
-    path: 'add',
-    loadChildren: () => import('./productos/add/add.module').then( m => m.AddPageModule)
-  },
+  
+
   {
     path: 'product-add',
     loadChildren: () => import('./productos/product-add/product-add.module').then( m => m.ProductAddPageModule)
@@ -43,11 +38,11 @@ const routes: Routes = [
     loadChildren: () => import('./productos/product-all/product-all.module').then( m => m.ProductAllPageModule)
   },
   {
-    path: 'product-detail',
+    path: 'product-detail/:id',
     loadChildren: () => import('./productos/product-detail/product-detail.module').then( m => m.ProductDetailPageModule)
   },
   {
-    path: 'product-edit',
+    path: 'product-edit/:id',
     loadChildren: () => import('./productos/product-edit/product-edit.module').then( m => m.ProductEditPageModule)
   },
   {

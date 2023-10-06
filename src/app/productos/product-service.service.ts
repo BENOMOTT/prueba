@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ClProducto } from './model/ClProducto';
+import { ClProducto } from './model/CLProducto';
 
 // Importamos  las librerías necesarias
 import { Observable, of, throwError } from 'rxjs';
@@ -7,7 +7,7 @@ import { catchError, tap, map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 
 // creamos Constantes que utilizaremos en el envio
-const apiUrl = "http://localhost:3000/productos";
+const apiUrl = "http://localhost:3000/productos/";
 const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
 
 @Injectable({
