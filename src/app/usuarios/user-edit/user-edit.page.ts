@@ -17,7 +17,7 @@ export class UserEditPage implements OnInit {
   // FormGroup para validaciones
   userForm!: FormGroup;
   // Esquema a utilizar en el Html
-  usuario: ClUsuario = { id: 1, nombre: '', apellido: '', descripcion: '', fecha: new Date()};
+  usuario: ClUsuario = { id: 1, first_name: '', last_name: '', email: '', clave: ''};
   id: any = '';
   //prod_name: string = '';
   //prod_desc: string = '';
@@ -38,9 +38,10 @@ export class UserEditPage implements OnInit {
     this.getUser(this.route.snapshot.params['id']);
     // Especificamos Validaciones por medio de FormGroup
     this.userForm = this.formBuilder.group({
-      'user_name': [null, Validators.required],
-      'user_lastname': [null, Validators.required],
-      'user_desc': [null, Validators.required]
+      'first_name': [null, Validators.required],
+      'last_name': [null, Validators.required],
+      'email': [null, Validators.required],
+      'clave': [null, Validators.required]
     });
   }
   async onFormSubmit(form: NgForm) {
@@ -84,9 +85,10 @@ export class UserEditPage implements OnInit {
             this.id = data.id;
             // Actualiza los datos
             this.userForm.setValue({
-              prod_name: data.nombre,
-              prod_lastname: data.apellido,
-              prod_desc: data.descripcion,
+              first_name: data.first_name,
+              last_name: data.last_name,
+              email: data.email,
+              clave: data.clave
             });
             loading.dismiss();
           }

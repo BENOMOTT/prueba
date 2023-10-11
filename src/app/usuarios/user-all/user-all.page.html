@@ -26,17 +26,22 @@
   <ion-item>
     <ion-label>Nombre:</ion-label>
     <!-- ngModel, Objeto producto del TypeScript -->
-    <ion-input type="text" [(ngModel)]="usuario.nombre">
+    <ion-input type="text" [(ngModel)]="first_name">
     </ion-input>
   </ion-item>
   <ion-item>
     <ion-label>Apellido:</ion-label>
-    <ion-input type="text" [(ngModel)]="usuario.apellido">
+    <ion-input type="text" [(ngModel)]="last_name">
     </ion-input>
   </ion-item>
   <ion-item>
-    <ion-label>Descripcion:</ion-label>
-    <ion-input type="text" [(ngModel)]="usuario.descripcion">
+    <ion-label>Email:</ion-label>
+    <ion-input type="text" [(ngModel)]="email">
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Clave:</ion-label>
+    <ion-input type="text" [(ngModel)]="clave">
     </ion-input>
   </ion-item>
 

@@ -16,10 +16,10 @@ export class UserDetailPage implements OnInit {
   // Creamos registro a utilizar en el Html
   producto: ClUsuario = {
     id: 1511
-    , nombre: ''
-    , apellido: ''
-    , descripcion: ''
-    , fecha: new Date()
+    , first_name: ''
+    , last_name: ''
+    , email: ''
+    , clave: ''
   };
 
   // Injectamos Librerías a utilizar
@@ -92,7 +92,7 @@ export class UserDetailPage implements OnInit {
       message: 'Loading...'
     });
     await loading.present();
-    await this.restApi.deleteProduct(id)
+    await this.restApi.deleteUser(id)
       .subscribe({
         next: (res) => {
           console.log("Error DetailUser Página", res);

@@ -22,10 +22,10 @@ export class UserAddPage implements OnInit {
   // Generalmente se usa una interface, sin embargo para jugar utilizaremos  una clase
   usuario: ClUsuario = {
     id: ++ultimoId
-    , nombre: ''
-    , apellido: ''
-    , descripcion: ''
-    , fecha: new Date()
+    , first_name: ''
+    , last_name: ''
+    , email: ''
+    , clave: ''
   };
 
   // Injectamos FormBuilder, el cual nos permitirá realizar validaciones                         
@@ -42,9 +42,10 @@ export class UserAddPage implements OnInit {
   ngOnInit() {
     // Especificamos que todos los campos son obligatorios
     this.userForm = this.formBuilder.group({
-      "user_name": [null, Validators.required],
-      "user_lastname": [null, Validators.required],
-      'user_desc': [null, Validators.required]
+      "first_name": [null, Validators.required],
+      "last_name": [null, Validators.required],
+      'email': [null, Validators.required],
+      'clave': [null, Validators.required]
     });
   }
   // se ejecutará cuando presione el Submit
@@ -59,7 +60,7 @@ export class UserAddPage implements OnInit {
     await loading.present();
 
     // Ejecuta el método del servicio y los suscribe
-    await this.restApi.addProduct(this.usuario)
+    await this.restApi.addUser(this.usuario)
       .subscribe({
         next: (res) => {
           console.log("Next AddUser Page",res)

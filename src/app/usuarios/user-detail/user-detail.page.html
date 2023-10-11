@@ -14,21 +14,25 @@
 <ion-content>
   <ion-card>
     <ion-card-header>
-      <ion-card-title>{{usuario.nombre}}</ion-card-title>
+      <ion-card-title>{{usuario.first_name}}</ion-card-title>
     </ion-card-header>
 
     <ion-card-content>
       <ion-item>
         <p>nombre : </p>
-        <p>{{usuario.nombre}}</p>
+        <p>{{usuario.first_name}}</p>
       </ion-item>
       <ion-item>
         <p>apellido : </p>
-        <p>{{usuario.apellido}}</p>
+        <p>{{usuario.last_name}}</p>
       </ion-item>
       <ion-item>
-        <p>Descripción : </p>
-        <p>{{usuario.descripcion}}</p>
+        <p>Email : </p>
+        <p>{{usuario.email}}</p>
+      </ion-item>
+      <ion-item>
+        <p>Clave : </p>
+        <p>{{usuario.clave}}</p>
       </ion-item>
       <ion-button type="button" shape="round" color="primary" expand="block" href="/user-edit/{{usuario.id}}">Editar</ion-button>
       <ion-button type="button" shape="round" color="danger" expand="block" (click)="delete(usuario.id)">Eliminar</ion-button>
