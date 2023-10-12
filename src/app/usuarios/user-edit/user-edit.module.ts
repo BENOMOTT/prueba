@@ -7,12 +7,13 @@ import { IonicModule } from '@ionic/angular';
 import { UserEditPageRoutingModule } from './user-edit-routing.module';
 
 import { UserEditPage } from './user-edit.page';
-
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    ReactiveFormsModule,     
     UserEditPageRoutingModule
   ],
   declarations: [UserEditPage]

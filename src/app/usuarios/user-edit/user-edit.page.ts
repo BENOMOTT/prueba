@@ -27,7 +27,7 @@ export class UserEditPage implements OnInit {
   // Injectamos librerías
   constructor(public restApi: UserServiceService,
     public loadingController: LoadingController,
-    public alertController: AlertController,
+    public alertController: AlertController, 
     public route: ActivatedRoute,
     public router: Router,
     private formBuilder: FormBuilder) { }

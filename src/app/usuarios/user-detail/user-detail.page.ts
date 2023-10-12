@@ -6,7 +6,6 @@ import { LoadingController, AlertController } from '@ionic/angular';
 import { ClUsuario } from '../model/ClUsuario';
 import { UserServiceService } from '../user-service.service';
 
-
 @Component({
   selector: 'app-user-detail',
   templateUrl: './user-detail.page.html',
@@ -14,7 +13,7 @@ import { UserServiceService } from '../user-service.service';
 })
 export class UserDetailPage implements OnInit {
   // Creamos registro a utilizar en el Html
-  producto: ClUsuario = {
+  usuario: ClUsuario = {
     id: 1511
     , first_name: ''
     , last_name: ''
@@ -33,11 +32,11 @@ export class UserDetailPage implements OnInit {
 
   // En el OnInit, ejecutamos la lectura
   ngOnInit() {
-    this.getProduct();
+    this.getUser();
   }
 
 // Método que permite leer el producto
-  async getProduct() {
+  async getUser() {
     console.log("getUser **************** ParamMap ID:" + this.route.snapshot.paramMap.get('id'));
     // Creamos un Wait
     const loading = await this.loadingController.create({ message: 'Loading...' });
@@ -49,7 +48,7 @@ export class UserDetailPage implements OnInit {
           console.log("Data *****************");
           console.log(res);
           // Si funciona la respuesta la pasamos al producto
-          this.producto = res;
+          this.usuario = res;
           loading.dismiss();
         }
         , complete: () => { }

@@ -14,7 +14,7 @@ let ultimoId = 1000;
   templateUrl: './user-add.page.html',
   styleUrls: ['./user-add.page.scss'],
 })
-export class UserAddPage implements OnInit {
+export class UserAddPage implements OnInit { 
   //Creamos una variable del tipo FormGroup
   // ! ==> Con esto le decimos a TS, que sabemos que la variable no esta inicializada
   //          y que estamos seguro que cuando se ejecute no será null

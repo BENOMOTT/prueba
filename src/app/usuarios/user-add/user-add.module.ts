@@ -8,12 +8,18 @@ import { UserAddPageRoutingModule } from './user-add-routing.module';
 
 import { UserAddPage } from './user-add.page';
 
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    UserAddPageRoutingModule
+    UserAddPageRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+
   ],
   declarations: [UserAddPage]
 })

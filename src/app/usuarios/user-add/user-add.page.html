@@ -15,21 +15,22 @@
   <form [formGroup]="userForm" (ngSubmit)="onFormSubmit(userForm.value)">
     <ion-item>
       <ion-label position="floating">Nombre</ion-label>
-      <ion-input type="text" [(ngModel)]="first_name" formControlName="first_name"></ion-input>
+      <ion-input type="text" [(ngModel)]="usuario.first_name" formControlName="first_name"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Apellido</ion-label>
-      <ion-input type="text" [(ngModel)]="last_name" formControlName="last_name"></ion-input>
+      <ion-input type="text" [(ngModel)]="usuario.last_name" formControlName="last_name"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Email</ion-label>
-      <ion-textarea [(ngModel)]="email" formControlName="email"></ion-textarea>
+      <ion-textarea [(ngModel)]="usuario.email" formControlName="email"></ion-textarea>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Clave</ion-label>
-      <ion-textarea [(ngModel)]="clave" formControlName="clave"></ion-textarea>
+      <ion-textarea [(ngModel)]="usuario.clave" formControlName="clave"></ion-textarea>
     </ion-item>
     <ion-button type="submit" shape="round" color="primary" expand="block"
-      [disabled]="!productForm.valid">Submit</ion-button>
+      [disabled]="!userForm.valid">Submit</ion-button>
   </form>
 </ion-content>
+
