@@ -68,7 +68,11 @@ const routes: Routes = [
   {
     path: 'user-list',
     loadChildren: () => import('./usuarios/user-list/user-list.module').then( m => m.UserListPageModule)
+  },  {
+    path: 'camera',
+    loadChildren: () => import('./camera/camera.module').then( m => m.CameraPageModule)
   },
+
 
 
 
