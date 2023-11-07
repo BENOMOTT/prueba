@@ -2,18 +2,12 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
-
-import type { IonModal } from '@ionic/angular';
-import { AnimationController } from '@ionic/angular';
-
-
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: 'login.page.html',
-
 })
-
 
 export class LoginPage {
   formularioLogin: FormGroup;
@@ -23,7 +17,8 @@ export class LoginPage {
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
-    private modalController: ModalController
+    private modalController: ModalController,
+    private authService: AuthService
   ) {
     this.formularioLogin = this.formBuilder.group({
       nombre: ['', Validators.required],
@@ -45,13 +40,13 @@ export class LoginPage {
       const hasThreeChars = (password.match(/[a-zA-Z]/g) || []).length >= 3;
       const hasUpperCase = /[A-Z]/.test(password);
 
+      this.authService.login(nombreControl.value, password);
 
-      //interpolacion
-      if (hasFourNumbers && hasThreeChars && hasUpperCase) {
+      if (this.authService.isLoggedIn()) {
         const nombreUsuario = nombreControl.value;
         this.router.navigate(['/home', { nombreUsuario }]);
       } else {
-        console.log('La contraseña no cumple con los requisitos.');
+        console.log('La autenticación falló. Verifica las credenciales.');
       }
       this.ocultarBarra();
 
@@ -64,7 +59,6 @@ export class LoginPage {
     this.mostrarBarraProgreso = true;
   }
 
-  // Método para ocultar la barra de progreso
   ocultarBarra() {
     this.mostrarBarraProgreso = false;
   } 
@@ -82,8 +76,6 @@ export class LoginPage {
       return { invalidPassword: true };
     }
   }
-
-  //modal
 
   enviarFormulario() {
     const correoControl = this.formularioLogin.get('correo');

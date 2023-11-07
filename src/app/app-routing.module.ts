@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './auth.guard';
 
 
 const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule),
+    canActivate: [AuthGuard]
     
   },
   {
@@ -29,7 +31,8 @@ const routes: Routes = [
   },
   {
     path: 'instrumentos',
-    loadChildren: () => import('./instrumentos/instrumentos.module').then( m => m.InstrumentosPageModule)
+    loadChildren: () => import('./instrumentos/instrumentos.module').then( m => m.InstrumentosPageModule),
+    canActivate: [AuthGuard]
   },
   
 
@@ -75,16 +78,13 @@ const routes: Routes = [
   },
   {
     path: 'camera',
-    loadChildren: () => import('./camera/camera.module').then( m => m.CameraPageModule)
+    loadChildren: () => import('./camera/camera.module').then( m => m.CameraPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'geolocation',
     loadChildren: () => import('./geolocation/geolocation.module').then( m => m.GeolocationPageModule)
-  },
-
-
-
-
+  }
 ];
 
 @NgModule({
