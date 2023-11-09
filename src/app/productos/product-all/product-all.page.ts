@@ -29,7 +29,7 @@ export class ProductAllPage implements OnInit {
 
   constructor() { }
   ngOnInit() {  }
-  public id: string = '';
+  public idProducto: string = '';
 
 
   leer() {}

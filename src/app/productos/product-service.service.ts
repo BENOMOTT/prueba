@@ -52,34 +52,34 @@ export class ProductServiceService {
 
 
   //  Obtener un Producto
-  getProduct(id: String): Observable<ClProducto> {
+  getProduct(idProducto: String): Observable<ClProducto> {
     //const url = '${apiUrl}/${id}';
     //return this.http.get<Producto>(url).pipe(
-    console.log("getProduct ID:" + id);
-    return this.http.get<ClProducto>(apiUrl + "/" + id)
+    console.log("getProduct ID:" + idProducto);
+    return this.http.get<ClProducto>(apiUrl + idProducto)
       .pipe(
-        tap(_ => console.log('fetched product id=${id}')),
-        catchError(this.handleError<ClProducto>('getProduct id=${id}'))
+        tap(_ => console.log('fetched product id=${idProducto}')),
+        catchError(this.handleError<ClProducto>('getProduct id=${idProducto}'))
       );
   }
 
-  deleteProduct(id: number): Observable<ClProducto> {
-    //const url = '${apiUrl}/${id}';
-    //return this.http.delete<Producto>(url, httpOptions).pipe(
-    return this.http.delete<ClProducto>(apiUrl + "/" + id, httpOptions)
+  deleteProduct(idProducto: number): Observable<ClProducto> {
+    return this.http.delete<ClProducto>(apiUrl + idProducto, httpOptions)
       .pipe(
-        tap(_ => console.log('deleted product id=${id}')),
+        tap(_ => console.log(`deleted product id=${idProducto}`)), // Usar comillas invertidas (`) para interpolación
         catchError(this.handleError<ClProducto>('deleteProduct'))
       );
   }
 
-  updateProduct(id: number, producto: ClProducto): Observable<ClProducto> {
-    return this.http.put<ClProducto>(apiUrl + "/" + id, producto, httpOptions)
+  updateProduct(idProducto: number, producto: ClProducto): Observable<ClProducto> {
+    return this.http.put<ClProducto>(apiUrl + idProducto, producto, httpOptions)
       .pipe(
-        tap(_ => console.log('updated product id=${id}')),
+        tap(_ => console.log('updated product id=${idProducto}')),
         catchError(this.handleError<any>('updateProduct'))
       );
   }
+  
+  
 
 
 }
