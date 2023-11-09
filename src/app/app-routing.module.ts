@@ -39,27 +39,27 @@ const routes: Routes = [
   {
     path: 'product-add',
     loadChildren: () => import('./productos/product-add/product-add.module').then( m => m.ProductAddPageModule),
-    canActivate: [AuthGuard]
+
   },
   {
     path: 'product-all',
     loadChildren: () => import('./productos/product-all/product-all.module').then( m => m.ProductAllPageModule)
-    ,canActivate: [AuthGuard]
+
   },
   {
     path: 'product-detail/:id',
     loadChildren: () => import('./productos/product-detail/product-detail.module').then( m => m.ProductDetailPageModule)
-    ,canActivate: [AuthGuard]
+
   },
   {
     path: 'product-edit/:id',
     loadChildren: () => import('./productos/product-edit/product-edit.module').then( m => m.ProductEditPageModule)
-    ,canActivate: [AuthGuard]
+
   },
   {
     path: 'product-list',
     loadChildren: () => import('./productos/product-list/product-list.module').then( m => m.ProductListPageModule)
-    ,canActivate: [AuthGuard]
+
   },
   {
     path: 'user-add',

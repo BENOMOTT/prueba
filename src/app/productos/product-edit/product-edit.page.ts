@@ -18,7 +18,7 @@ export class ProductEditPage implements OnInit {
   productForm!: FormGroup;
   // Esquema a utilizar en el Html
   producto: ClProducto = {   
-    codigo: "09-G5",
+    codigo: "09-G11",
     nombreprod: "",
     precio: 0,
     cantidad: 0,
