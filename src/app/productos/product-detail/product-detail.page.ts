@@ -12,15 +12,28 @@ import { ProductServiceService } from '../product-service.service';
   templateUrl: './product-detail.page.html',
   styleUrls: ['./product-detail.page.scss'],
 })
+
 export class ProductDetailPage implements OnInit {
   // Creamos registro a utilizar en el Html
   producto: ClProducto = {
-    id: 1511
-    , nombre: 'Harrys el Magnifico'
-    , descripcion: 'El Ingenioso'
-    , precio: 100
-    , fecha: new Date()
-    , cantidad: 200
+    codigo: "0",
+    nombreprod: "",
+    precio: 0,
+    cantidad: 0,
+    fechaNacimiento: new Date(),
+    rut: 0,
+    dv: "0",
+    enfermedad: "0",
+    fonocontacto: 0,
+    categoria: "0",
+    editorial: "0",
+    raza: "0",
+    edad: 0,
+    altura: 0,
+    hrini: "0",
+    hrfin: "0",
+    direccion: "0",
+    fCreacion: new Date()
   };
 
   // Injectamos Librerías a utilizar

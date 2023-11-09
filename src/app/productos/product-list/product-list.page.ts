@@ -17,9 +17,11 @@ export class ProductListPage implements OnInit {
   // Creamos la Variable para el Html
   productos: ClProducto[] = [];
   // Injectamos Librerias
-  constructor(public restApi: ProductServiceService
-    , public loadingController: LoadingController
-    , public router: Router) { }
+  constructor(
+    public restApi: ProductServiceService,
+    public loadingController: LoadingController,
+    public router: Router
+  ) {}
 
   // LLamamos al método que rescata los productos  
   ngOnInit() {
@@ -37,23 +39,21 @@ export class ProductListPage implements OnInit {
     await loading.present();
     console.log("Entrando :");
     // Obtiene el Observable del servicio
-    await this.restApi.getProducts()
-      .subscribe({
-        next: (res) => { 
-          console.log("Res:" + res);
-  // Si funciona asigno el resultado al arreglo productos
-          this.productos = res;
-          console.log("thisProductos:",this.productos);
-          loading.dismiss();
-        }
-        , complete: () => { }
-        , error: (err) => {
-  // Si da error, imprimo en consola.
-          console.log("Err:" + err);
-          loading.dismiss();
-        }
-      })
+    await this.restApi.getProducts().subscribe({
+      next: (res) => {
+       
+        this.productos = res.filter(producto => producto.codigo === '09-G11');
+        loading.dismiss();
+      },
+      complete: () => {},
+      error: (err) => {
+        console.log("Err:" + err);
+        loading.dismiss();
+      }
+    });
   }
+}
+
 
 
   
@@ -61,4 +61,3 @@ export class ProductListPage implements OnInit {
   //   console.log("Moviendo Item Array Drop ***************:");
   //   moveItemInArray(this.productos, event.previousIndex, event.currentIndex);
   // }
-}
