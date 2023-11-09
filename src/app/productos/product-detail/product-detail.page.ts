@@ -75,11 +75,14 @@ export class ProductDetailPage implements OnInit {
       })
   }
 
-  // El Html invoca el método delete
-  async delete(id: number) {
-    // Confirma Primero
-    this.presentAlertConfirm(id, 'Confirme la Eliminación, De lo cantrario Cancele');
+
+    async delete(id: number | undefined) {
+    if (id !== undefined) {
+      this.presentAlertConfirm(id, 'Confirme la Eliminación, De lo contrario, cancele');
+    }
   }
+  // El Html invoca el método delete
+
   // Creamos una rutina para confirmar la eliminación
   async presentAlertConfirm(id: number, msg: string) {
     const alert = await this.alertController.create({
