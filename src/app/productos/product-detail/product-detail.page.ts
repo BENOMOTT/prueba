@@ -83,7 +83,7 @@ export class ProductDetailPage implements OnInit {
   }
   // El Html invoca el método delete
 
-  // Creamos una rutina para confirmar la eliminación
+  // Creamos una rutina para confirmar la eliminación 
   async presentAlertConfirm(id: number, msg: string) {
     const alert = await this.alertController.create({
       header: 'Warning!', // Título
