@@ -37,17 +37,17 @@ export class GeolocationPage implements OnInit {
     };
 
     try {
-      this.callbackId = await Geolocation.watchPosition(options, callback); // Cambio aquí
-      console.log('Watch started with ID:', this.callbackId); // Cambio aquí
+      this.callbackId = await Geolocation.watchPosition(options, callback);
+      console.log('Watch started with ID:', this.callbackId);
     } catch (error) {
       console.error('Error starting watch:', error);
     }
   }
 
   async stopWatch() {
-    if (this.callbackId !== undefined) { // Cambio aquí
+    if (this.callbackId !== undefined) {
       try {
-        await Geolocation.clearWatch({ id: this.callbackId }); // Cambio aquí
+        await Geolocation.clearWatch({ id: this.callbackId });
         console.log('Watch stopped for ID:', this.callbackId);
       } catch (error) {
         console.error('Error stopping watch:', error);

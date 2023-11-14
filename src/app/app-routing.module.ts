@@ -38,27 +38,32 @@ const routes: Routes = [
 
   {
     path: 'product-add',
-    loadChildren: () => import('./productos/product-add/product-add.module').then( m => m.ProductAddPageModule),
+    loadChildren: () => import('./productos/product-add/product-add.module').then( m => m.ProductAddPageModule)
+    ,canActivate: [AuthGuard]
 
   },
   {
     path: 'product-all',
     loadChildren: () => import('./productos/product-all/product-all.module').then( m => m.ProductAllPageModule)
+    ,canActivate: [AuthGuard]
 
   },
   {
     path: 'product-detail/:id',
     loadChildren: () => import('./productos/product-detail/product-detail.module').then( m => m.ProductDetailPageModule)
+    ,canActivate: [AuthGuard]
 
   },
   {
     path: 'product-edit/:id',
     loadChildren: () => import('./productos/product-edit/product-edit.module').then( m => m.ProductEditPageModule)
+    ,canActivate: [AuthGuard]
 
   },
   {
     path: 'product-list',
     loadChildren: () => import('./productos/product-list/product-list.module').then( m => m.ProductListPageModule)
+    ,canActivate: [AuthGuard]
 
   },
   {
@@ -95,9 +100,11 @@ const routes: Routes = [
     path: 'geolocation',
     loadChildren: () => import('./geolocation/geolocation.module').then( m => m.GeolocationPageModule)
     ,canActivate: [AuthGuard]
-  },  {
+  },
+  {
     path: 'admin',
     loadChildren: () => import('./admin/admin.module').then( m => m.AdminPageModule)
+    ,canActivate: [AuthGuard]
   }
 
 ];
