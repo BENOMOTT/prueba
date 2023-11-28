@@ -25,14 +25,7 @@ export class HomePage {
     private navCtrl: NavController) {}
 
 
-    ngOnInit() {
-      const nombreUsuarioParam = this.activatedRoute.snapshot.paramMap.get('nombreUsuario');
-      if (nombreUsuarioParam !== null) {
-        this.nombreUsuario = nombreUsuarioParam;
-        console.log('Datos obtenidos:', this.nombreUsuario);
-        this.cdr.detectChanges(); 
-      }
-    }
+
   ngAfterViewInit() {
     if (this.card) {
       this.animation = this.animationCtrl
@@ -51,6 +44,10 @@ export class HomePage {
     await this.authService.logout();
     this.navCtrl.navigateRoot('/login');
   }
+  async ngOnInit() {
+    this.nombreUsuario = await this.authService.getNombreUsuario();
+  }
+
   play() {
     this.animation.play();
   }

@@ -54,7 +54,10 @@ export class AuthService {
     await this.storage.remove('isLoggedIn');
   }
     
-
+  async getNombreUsuario(): Promise<string> {
+    const usuario = await this.storage.get('user');
+    return usuario ? usuario.nombre : '';
+  }
 } 
 
 
