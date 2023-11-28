@@ -7,6 +7,8 @@ import { LoginPageRoutingModule } from './login-routing.module';
 
 import { LoginPage } from './login.page';
 
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -14,7 +16,10 @@ import { LoginPage } from './login.page';
     ReactiveFormsModule,
     IonicModule,
     LoginPageRoutingModule,
+    MatProgressBarModule
   ],
   declarations: [LoginPage],
+  
 })
+
 export class LoginPageModule {}

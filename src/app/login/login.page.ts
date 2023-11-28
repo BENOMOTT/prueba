@@ -12,7 +12,7 @@ import { AuthService } from '../auth.service';
 export class LoginPage {
   formularioLogin: FormGroup;
   isModalOpen: boolean = false;
-  mostrarBarraProgreso = false; 
+  mostrarBarraProgreso = false;
 
   constructor(
     private router: Router,
@@ -30,7 +30,7 @@ export class LoginPage {
   iniciarSesion() {
     const nombreControl = this.formularioLogin.get('nombre');
     const contraseñaControl = this.formularioLogin.get('contraseña');
-    
+
     if (nombreControl && nombreControl.valid && contraseñaControl && contraseñaControl.valid) {
 
       this.mostrarBarra();
@@ -61,7 +61,7 @@ export class LoginPage {
 
   ocultarBarra() {
     this.mostrarBarraProgreso = false;
-  } 
+  }
 
   validaContraseña(control: AbstractControl) {
     const password = control.value;
@@ -71,7 +71,7 @@ export class LoginPage {
     const hasUpperCase = /[A-Z]/.test(password);
 
     if (hasFourNumbers && hasThreeChars && hasUpperCase) {
-      return null; 
+      return null;
     } else {
       return { invalidPassword: true };
     }
