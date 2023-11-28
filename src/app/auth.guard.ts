@@ -2,13 +2,32 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/auth.service';
+import { Storage } from '@ionic/storage-angular';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authservice: AuthService, private router: Router, private storage: Storage) {}
 
+  canActivate( 
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+ 
+    const isAuthenticated = true; // deberia estar el valor booleano que tiene el estorage cuando se esta logeado
+  
+    if (isAuthenticated) {
+      return true; 
+    } else { 
+      this.router.navigate(['/login']);
+      return false;
+ 
+    }
+ 
+  }
+
+}
+/** ANTES
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -24,3 +43,5 @@ export class AuthGuard implements CanActivate {
     }
   }
 }
+
+*/ // ANTES

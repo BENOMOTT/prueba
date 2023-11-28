@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup,FormControl,Validators,FormBuilder} from '@angular/forms';
 import { AlertController } from '@ionic/angular';
+import { AuthService } from '../auth.service';
+import { Storage } from '@ionic/storage-angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registro',
@@ -11,7 +14,10 @@ export class RegistroPage implements OnInit {
 
   formularioRegistro: FormGroup;
   
-  constructor(public fb: FormBuilder,
+  constructor(private authService: AuthService,
+    private storage: Storage,
+    private router: Router,
+    public fb: FormBuilder,
 
     public alertController: AlertController) {
     this.formularioRegistro = this.fb.group({
@@ -40,6 +46,16 @@ export class RegistroPage implements OnInit {
       await alert.present();
       return;
     }
+    const { nombre, contraseña } = this.formularioRegistro.value;
+
+    const registered = await this.authService.register(nombre, contraseña);
+
+    if (registered) {
+      console.log('Usuario registrado correctamente', nombre);
+      this.router.navigate(['/login']);
+    } else {
+      console.log('Error al registrar el usuario');
+    }
 
     var usuario = {
       nombre: f.nombre,
@@ -51,7 +67,7 @@ export class RegistroPage implements OnInit {
 
     }
 
-    localStorage.setItem('usuario',JSON.stringify(usuario));
+ 
   }
 
 }

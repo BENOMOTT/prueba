@@ -1,6 +1,8 @@
 import { Component, ChangeDetectorRef, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Animation, AnimationController } from '@ionic/angular';
+import { AuthService } from '../auth.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -10,14 +12,17 @@ import { Animation, AnimationController } from '@ionic/angular';
 export class HomePage {
   nombreUsuario: string = '';
 
+
   @ViewChild('card', { read: ElementRef }) card!: ElementRef;
 
   private animation!: Animation;
 
-  
+
   constructor(private animationCtrl: AnimationController,
     private activatedRoute: ActivatedRoute,
-    private cdr: ChangeDetectorRef) {}
+    private cdr: ChangeDetectorRef,
+    private authService: AuthService,
+    private navCtrl: NavController) {}
 
 
     ngOnInit() {
@@ -42,7 +47,10 @@ export class HomePage {
         ]);
     }
   }
-
+  async logout() {
+    await this.authService.logout();
+    this.navCtrl.navigateRoot('/login');
+  }
   play() {
     this.animation.play();
   }

@@ -9,6 +9,8 @@ import { LoginPage } from './login.page';
 
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 
+import { IonicStorageModule } from '@ionic/storage-angular';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -16,7 +18,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     ReactiveFormsModule,
     IonicModule,
     LoginPageRoutingModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    IonicStorageModule
   ],
   declarations: [LoginPage],
   
