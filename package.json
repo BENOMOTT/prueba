@@ -23,6 +23,7 @@
     "@angular/platform-browser": "^16.0.0",
     "@angular/platform-browser-dynamic": "^16.0.0",
     "@angular/router": "^16.0.0",
+    "@capacitor/android": "^5.5.1",
     "@capacitor/app": "5.0.6",
     "@capacitor/camera": "^5.0.7",
     "@capacitor/core": "5.3.0",
@@ -57,6 +58,11 @@
     "@types/node": "^12.11.1",
     "@typescript-eslint/eslint-plugin": "5.3.0",
     "@typescript-eslint/parser": "5.3.0",
+    "@wdio/jasmine-framework": "^8.24.3",
+    "@wdio/local-runner": "^8.24.3",
+    "@wdio/schematics": "^1.2.1",
+    "@wdio/spec-reporter": "^8.24.2",
+    "chromedriver": "^119.0.1",
     "eslint": "^7.26.0",
     "eslint-plugin-import": "2.22.1",
     "eslint-plugin-jsdoc": "30.7.6",
@@ -70,7 +76,8 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
     "ts-node": "^8.3.0",
-    "typescript": "~5.0.2"
+    "typescript": "~5.0.2",
+    "wdio-chromedriver-service": "^8.1.1"
   },
   "description": "An Ionic project"
 }
