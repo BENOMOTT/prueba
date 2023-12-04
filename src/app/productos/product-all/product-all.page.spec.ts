@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { ProductAllPage } from './product-all.page';
 
 describe('ProductAllPage', () => {
@@ -6,9 +6,15 @@ describe('ProductAllPage', () => {
   let fixture: ComponentFixture<ProductAllPage>;
 
   beforeEach(async(() => {
-    fixture = TestBed.createComponent(ProductAllPage);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    TestBed.configureTestingModule({
+      declarations: [ProductAllPage],
+    })
+    .compileComponents()
+    .then(() => {
+      fixture = TestBed.createComponent(ProductAllPage);
+      component = fixture.componentInstance;
+      fixture.detectChanges();
+    });
   }));
 
   it('should create', () => {

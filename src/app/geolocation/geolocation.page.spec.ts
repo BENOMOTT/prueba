@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { GeolocationPage } from './geolocation.page';
 
 describe('GeolocationPage', () => {
@@ -6,9 +6,15 @@ describe('GeolocationPage', () => {
   let fixture: ComponentFixture<GeolocationPage>;
 
   beforeEach(async(() => {
-    fixture = TestBed.createComponent(GeolocationPage);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    TestBed.configureTestingModule({
+      declarations: [GeolocationPage],
+    })
+    .compileComponents()
+    .then(() => {
+      fixture = TestBed.createComponent(GeolocationPage);
+      component = fixture.componentInstance;
+      fixture.detectChanges();
+    });
   }));
 
   it('should create', () => {
