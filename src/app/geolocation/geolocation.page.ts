@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import {
   CallbackID,
-  ClearWatchOptions,
   Geolocation,
   PositionOptions,
   WatchPositionCallback,
@@ -16,24 +15,41 @@ import {
 })
 export class GeolocationPage implements OnInit {
   currentPosition: any;
-  callbackId: CallbackID | undefined; // Cambio aquí
+  callbackId: CallbackID | undefined;
 
-  constructor() { }
+  constructor(private cdr: ChangeDetectorRef) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   async printCurrentPosition() {
-    const coordinates = await Geolocation.getCurrentPosition();
-    this.currentPosition = coordinates;
-    console.log('Current position:', coordinates);
+    try {
+      const position = await Geolocation.getCurrentPosition();
+      console.log('Position received:', position);
+      
+      // Acceder a coords.latitude y coords.longitude
+      this.currentPosition = {
+        latitude: Number(position.coords.latitude),
+        longitude: Number(position.coords.longitude)
+      };
+  
+      console.log('currentPosition after assignment:', this.currentPosition);
+      this.cdr.detectChanges();
+    } catch (error) {
+      console.error('Error getting current position:', error);
+    }
   }
+  
+  
+  
+  
+  
 
   async startWatch() {
     const options: PositionOptions = {};
     const callback: WatchPositionCallback = (position) => {
       this.currentPosition = position;
       console.log('Position update:', position);
+      this.cdr.detectChanges();
     };
 
     try {
@@ -57,22 +73,22 @@ export class GeolocationPage implements OnInit {
     }
   }
 
-  async checkPermissions(): Promise<PermissionStatus> {
+  async checkPermissions() {
     try {
       const permissions = await Geolocation.checkPermissions();
-      return permissions;
+      console.log('Permissions:', permissions);
     } catch (error) {
-      throw error;
+      console.error('Error checking permissions:', error);
     }
   }
 
-  async requestPermissions(permissions?: GeolocationPluginPermissions | undefined): Promise<PermissionStatus> {
+  async requestPermissions(permissions?: GeolocationPluginPermissions | undefined): Promise<PermissionStatus | undefined> {
     try {
       const result = await Geolocation.requestPermissions(permissions);
       return result;
     } catch (error) {
-      throw error;
+      console.error('Error requesting permissions:', error);
+      return undefined; 
     }
   }
-  
 }

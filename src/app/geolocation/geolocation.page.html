@@ -1,40 +1,32 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>geolocation</ion-title>
+    <ion-title>Geolocalización</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">geolocation</ion-title>
+      <ion-title size="large">Geolocalización</ion-title>
     </ion-toolbar>
   </ion-header>
-</ion-content>
 
-<ion-card-content>
-  <ion-button [routerLink]="['/home']">Volver</ion-button>
-</ion-card-content>
+  <ion-card-content>
+    <ion-button [routerLink]="['/home']">Volver</ion-button>
+  </ion-card-content>
 
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Geolocalización
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+  <ion-content>
+    <ion-button (click)="printCurrentPosition()">Obtener posición actual</ion-button>
+    <ion-button (click)="startWatch()">Comenzar seguimiento</ion-button>
+    <ion-button (click)="stopWatch()">Detener seguimiento</ion-button>
+    <ion-button (click)="checkPermissions()">Verificar permisos</ion-button>
+    <ion-button (click)="requestPermissions()">Solicitar permisos</ion-button>
 
-<ion-content>
-  <ion-button (click)="printCurrentPosition()">Obtener posición actual</ion-button>
-  <ion-button (click)="startWatch()">Comenzar seguimiento</ion-button>
-  <ion-button (click)="stopWatch()">Detener seguimiento</ion-button>
-  <ion-button (click)="checkPermissions()">Verificar permisos</ion-button>
-  <ion-button (click)="requestPermissions()">Solicitar permisos</ion-button>
-
-  <div *ngIf="currentPosition">
-    <h3>Posición actual:</h3>
-    <p>Latitud: {{ currentPosition.latitude }}</p>
-    <p>Longitud: {{ currentPosition.longitude }}</p>
-  </div>
-  
+    <div *ngIf="currentPosition">
+      <h3>Posición actual:</h3>
+      <p>Latitud: {{ currentPosition.latitude.toFixed(6) }}</p>
+      <p>Longitud: {{ currentPosition.longitude.toFixed(6) }}</p>
+    </div>
+    
+  </ion-content>
 </ion-content>
